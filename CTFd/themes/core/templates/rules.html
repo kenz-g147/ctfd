@@ -1,0 +1,178 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+h2 {text-align:center;}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+   /* height: 600px; Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.accordion {
+  background-color: #E5E7E8;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #F3F3F3; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #000;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  color: #000;
+}
+
+</style>
+</head>
+
+
+<body>
+<br />
+<h2>Read Instructions Carefully</h2>
+<br />
+<p></p>
+
+<div class="row">
+  <div class="column" style="background-color:#F3F3F3;">
+    <h2>Rules</h2>
+    <hr>
+    <p>
+1. Do not attack the backend infrastructure of the CTF.  <br />
+2. Do not attack other teams playing in the CTF. <br />
+3. Do not brute-force the flag submission form. <br />
+4. Do not exchange flags or write-ups/hints of the challenges with other teams. <br />
+5. Do not violate Hackerearth's Terms of Service. <a href="https://www.hackerearth.com/terms-of-service/">You can read it here</a>. <br />
+6. Do not try to DDoS the challenges or make actions that could lead to this result. For example, brute force or use of automated tools with many threads. <br />
+7. Do not be part of more than one team within the same CTF. <br />
+
+</p>
+  </div>
+  <div class="column" style="background-color:#E5E7E8;">
+    <h2>Prohibited Activities</h2>
+    <hr>
+    <p>The following activities are strictly prohibited on this website unless otherwise explicitly stated as allowed in the mission statement:
+<br />
+<br/>
+1. Using automated scanners<br />
+2. Using brute force attacks<br />
+3. Denial of Service attacks<br />
+4. Attacking other student machines in challenges where you might achieve a shell on the vulnerable system<br />
+5. Attacking the lab infrastructure<br />
+6. Users violating the above will be either temporarily or permanently banned from the website.<br />
+
+</p>
+  </div>
+
+  <div class="column" style="background-color:#F3F3F3;">
+
+  	<h2>FAQ</h2>
+<hr>
+
+<button class="accordion">What is CTF?</button>
+<div class="panel">
+  <p>CTF (Capture the Flag) is a competition where teams or individuals have to solve a number of challenges. The one that solves/collects most flags the fastest wins the competition. Once each challenge has been solved successfully, the user will find a "flag" within the challenge that is proof of completion. If teams are tied, the one that finishes the challenges the fastest will appear higher on the scoreboard.</p>
+</div>
+
+<button class="accordion">Can I play CTFs remotely?</button>
+<div class="panel">
+  <p>This depends on the set up of each CTF! Some CTF's are onsite only, while others are open remotely. Check the rules of your CTF for more information.</p>
+</div>
+
+ <button class="accordion">How long does a CTF event last?</button>
+<div class="panel">
+  <p>This varies per event. Be sure to check the rules to have a better idea of how long it will last!
+  </p>
+</div>
+
+
+<button class="accordion">Are CTF scores saved?</button>
+<div class="panel">
+  <p>Yes the CTF scores are stored and you can see the progress of all teams in each CTF. The scoreboard is available for viewing even after the CTF has ended.
+</p>
+</div>
+
+<button class="accordion"> Do I have the same account on Hackerearth and in the CTF platform?</button>
+<div class="panel">
+  <p>
+No, each platform is separate. Whenever you register for a CTF contest on Hackerearth, you wil get a mail containing password for CTF using which you can login to CTF. Having an account on Hackerearth does not mean you have an account on the CTF platform. 
+</p>
+</div>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+  </div>
+  
+  	<footer>
+		<h3></h3>
+		<p>If you are unsure about an activity, then please contact support to confirm that it is allowed on our website: 
+<u>support@hackerearth.com</u></p>
+	</footer>
+  
+</div>
+
+
+</body>
+</html>

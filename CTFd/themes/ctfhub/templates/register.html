@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CTFHUB - LOGIN</title>
+        <link href="/favicon.png" rel="icon" type="image/png">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('views.themes', path='assets/fonts/font-awesome/css/font-awesome.min.css') }}">
+        <link type="text/css" href="{{ url_for('views.themes', path='assets/css/auth.css') }}" rel="stylesheet">
+    </head>
+    <body class="bg-default">
+        <div class="main-content">
+			<div class="header bg-gradient-primary py-7 py-lg-8">
+				<div class="container">
+					<div class="header-body text-center mb-7">
+						<div class="row justify-content-center">
+							<div class="col-lg-5 col-md-6">
+								<h1 class="text-white">Welcome to CTFHUB!</h1>
+								<p class="text-lead text-light">
+									Let's get you onboard quickly.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="separator separator-bottom separator-skew zindex-100">
+					<svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+						<polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+					</svg>
+				</div>
+			</div>
+			<div class="container mt--8 pb-5">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 col-md-8">
+						<div class="card bg-secondary shadow border-0">
+							{% for error in errors %}
+								<div class="alert alert-danger alert-dismissable" role="alert">
+								  <span class="sr-only">Error:</span>
+								  {{ error }}
+								  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+								</div>
+							{% endfor %}
+							<div class="card-body px-lg-5 py-lg-5">
+								<form method="post" accept-charset="utf-8" autocomplete="off" role="form" class="form-horizontal">
+		
+									<div class="form-group">
+										<div class="input-group input-group-alternative mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="fa fa-user"></i></span>
+											</div>
+											<input class="form-control" placeholder="Username" type="text" name="name" {% if name %}value="{{ name }}"{% endif %}  required autofocus>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group input-group-alternative mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+											</div>
+											<input class="form-control" placeholder="E-mail" type="email" name="email" {% if email %}value="{{ email }}"{% endif %} required>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group input-group-alternative">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="fa fa-lock"></i></span>
+											</div>
+											<input class="form-control" placeholder="Password" type="password" name="password" {% if password %}value="{{ password }}"{% endif %} required>
+		
+										</div>
+									</div>
+									<div class="text-center">
+										<button type="submit" class="btn btn-primary mt-4">Create account</button>
+									</div>
+									<input type="hidden" name="nonce" value="{{ nonce }}">
+								</form>
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="col-12 text-right">
+								<a href="{{ url_for('auth.login') }}" class="text-light">
+									<small>Already have an account?</small>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        </div>
+    </body>
+</html>

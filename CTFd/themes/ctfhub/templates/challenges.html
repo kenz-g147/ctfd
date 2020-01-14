@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ url_for('views.themes', path='css/challenge-board.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="col-12 pt-2">
+	<div class="pointcard overflow-hidden">
+	  <div class="card-content">
+		  <div class="media align-items-stretch">
+			<div class="media-body">
+				<div class="float-left pl-2">
+					<span class="font-large-3 text-bold-300">Challenges</span>
+				</div>
+			</div>
+		  </div>
+	  </div>
+	</div>
+</div>
+ <div class="row">
+	<div class="col-lg-6 col-md-12 col-sm-12">
+	  <div class="card-body text-center">
+		<div class="card-header mb-2">
+		  <span class="success">Total Points</span>
+		  <h3 class="display-4 blue-grey darken-1"><strong id="team-score">--</strong> / <strong id="total-score">--</strong></h3>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="col-lg-6 col-md-12 col-sm-12">
+	  <div class="card-body text-center">
+		<div class="card-header mb-2">
+		  <span class="danger">Total Challenges</span>
+		  <h3 class="display-4 blue-grey darken-1"><strong id="team-chals">--</strong>/<strong id="total-chals">--</strong></h3>
+		</div>
+	  </div>
+	</div>
+ </div>
+{% if infos %}
+	<div class="container">
+		<div id='errors' class="row">
+			<div class="col-md-12">
+				{% for info in infos %}
+					<h1 class="text-center">{{ info }}</h1>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+{% if errors %}
+<div class="container">
+	<div id='errors' class="row">
+		<div class="col-md-12">
+{% for error in errors %}
+			<h1 class="text-center">{{ error }}</h1>
+{% endfor %}
+		</div>
+	</div>
+</div>
+{% endif %}
+
+{% if admin or not errors %}
+<div class="container">
+	<div id='challenges-board'>
+		<div class="text-center">
+			<i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+		</div>
+	</div>
+</div>
+
+<input id="nonce" type="hidden" name="nonce" value="{{ nonce }}">
+
+<div class="modal fade" id="challenge-window" tabindex="-1" role="dialog">
+</div>
+{% endif %}
+<div class="pb-4">
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var authed = {{ (id is defined) | tojson }};
+	</script>
+	<script src="{{ url_for('views.themes', path='js/utils.js') }}"></script>
+	<script src="{{ url_for('views.themes', path='js/multi-modal.js') }}"></script>
+	{% if admin or not errors %}
+	<script src="{{ url_for('views.themes', path='js/challenges.js') }}"></script>
+	<script src="{{ url_for('views.themes', path='js/hints.js') }}"></script>
+	{% endif %}
+	<script src="{{ url_for('views.themes', path='js/style.js') }}"></script>
+{% endblock %}
